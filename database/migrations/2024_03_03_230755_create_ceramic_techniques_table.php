@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('ceramic_techniques', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
             $table->timestamps();
+          
         });
     }
 

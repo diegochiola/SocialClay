@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('ceramic_artworks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title');
+            $table->text('description');
+            $table->date('creation_date')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
+            //foreing key con cascade por si se elimina el usuario
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
