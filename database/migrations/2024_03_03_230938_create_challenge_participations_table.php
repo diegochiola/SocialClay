@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('ceramic_artwork_id');
             $table->timestamps();
             //foreing key con cascade por si se elimina el usuario
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ceramic_challenge_id')->references('id')->on('ceramic_challenges')->onDelete('cascade');
-            $table->foreign('ceramic_artwork_id')->references('id')->on('ceramic_artworks')->onDelete('cascade');
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('ceramic_challenge_id')->references('id')->on('ceramic_challenges')->onDelete('cascade');
+            //$table->foreign('ceramic_artwork_id')->references('id')->on('ceramic_artworks')->onDelete('cascade');
         });
     }
 

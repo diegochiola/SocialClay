@@ -19,14 +19,15 @@ return new class extends Migration
             $table->string('email', 50)->unique();
             $table->string('password', 50);
             $table->string('phone_number', 20);
-            $table->unsignedBigInteger('role_id'); //llamara a la tabla Roles
+            $table->enum('role', ['artist', 'enthusiast', 'administrator']); //llamara a la tabla Roles
             $table->string('location', 250)->nullable();
             $table->string('photo')->nullable(); //ubicacion de la foto
             $table->rememberToken(); //token para la opcion recuerdame
             $table->timestamps(); //crean el created_at updated_at
 
             //creamos la conexion con la tabla Roles
-            $table->foreing('role_id')->references('id')->on('roles');
+            //$table->foreign('role_id')->references('id')->on('roles');
+            
 
         });
     }

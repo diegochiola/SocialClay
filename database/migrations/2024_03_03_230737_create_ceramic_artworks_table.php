@@ -15,15 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->unsignedBigInteger('ceramic_technique_id'); //llamara a la tabla ceramic technique
+            $table->enum('ceramic-Technique', ['Handbuilding', 'Throwing on the Wheel', 'Slip Casting', 'Press Molding', 'Extrusion']); //ceramic technique enum
             $table->date('creation_date')->nullable();
             $table->string('photo')->nullable();
-            $table->unsignedBigInteger('user_id');
+            //$table->unsignedBigInteger('user_id');
             $table->timestamps();
+            
             //foreing key con cascade por si se elimina el usuario
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             //creamos la conexion con la tabla techniques
-            $table->foreing('ceramic_technique_id')->references('id')->on('ceramicTechniques')->onDelete('cascade');
+            //$table->foreing('ceramic_technique_id')->references('id')->on('ceramicTechniques')->onDelete('cascade');
         });
     }
 
