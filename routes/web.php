@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CeramicArtworkController;
 use App\Http\Controllers\UserController; //para poder trabajar con la clase UserController
 use App\Models\CeramicArtwork;
@@ -20,6 +21,7 @@ Route::get('/', function () {
 });
 
 //definicion de rutas
+Route::get('/home', [HomeController::class, 'home'])->name('home.home');
 Route::resource('/users',UserController::class); //route to User controller
 //Route::get('users',[Usercontroller::class, 'index']);
 //Route::get('users/create',[Usercontroller::class, 'create']);
