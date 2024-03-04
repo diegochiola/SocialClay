@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChallengeParticipation extends Model
 {
-    use HasFactory;
+    protected $table= 'ChallengeParticipations';
 }
