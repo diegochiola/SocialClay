@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_artworks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('ceramic_artwork__id');
+            $table->unsignedBigInteger('ceramic_artwork_id');
             $table->timestamps();
 
             //foreign keys

@@ -10,7 +10,7 @@ class UserArtwork extends Model
     use HasFactory;
     protected $table = 'user_artworks';
 
-    //foreign keys
+    //foreign keys to connect intermidate table
     public function user(){
         return $this->belongsTo(User::class, 'user_id'); 
     }
