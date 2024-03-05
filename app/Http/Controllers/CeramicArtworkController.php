@@ -13,7 +13,7 @@ class CeramicArtworkController extends Controller
     public function index()
     {
         //
-        return view('ceramicArtworks');
+        return view('ceramicArtworks.index');
     }
 
     /**
@@ -22,6 +22,7 @@ class CeramicArtworkController extends Controller
     public function create()
     {
         //
+        return view('ceramicArtworks.create');
     }
 
     /**
