@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CeramicArtworkController;
+use App\Http\Controllers\Challenges;
 use App\Http\Controllers\UserController; //para poder trabajar con la clase UserController
 use App\Models\CeramicArtwork;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,5 @@ Route::get('/home', [HomeController::class, 'home'])->name('home.home');
 Route::resource('/users',UserController::class); //route to User controller
 //Route::get('users',[Usercontroller::class, 'index']);
 //Route::get('users/create',[Usercontroller::class, 'create']);
-Route::resource('/CeramicArtworks',CeramicArtworkController::class); //route to ArtworkController
+Route::resource('/ceramicArtworks',CeramicArtworkController::class); //route to ArtworkController
+Route::resource('/challenges',Challenges::class); 

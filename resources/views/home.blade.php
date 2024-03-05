@@ -1,12 +1,12 @@
 @extends('layout/template')
 
-@section('title', 'Social')
+@section('title', 'SocialClay')
 
 @section('content') 
 
 <nav class="navbar navbar-expand-lg" style="background-color: #d0f779; color: #2e4a19;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{url('/home')}}">
     <img src="{{ asset('images/SocialClay_logo.png') }}" alt="Logo" width="auto" height="26" class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,10 +14,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
+        <!-- button join our community -->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Join our community</a>
+          <a class="nav-link active" aria-current="page" href="{{url('/users')}}">Join our community</a>
         </li>
-      
+        <!-- button add ceramicArtwork-->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url('/ceramicArtworks')}}">Add Ceramic Artwork</a>
+        </li>
+        <!-- Be part of our challenges-->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url('/challenges')}}">Join our challenges</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -30,7 +38,7 @@
         <h4 class="text-center mb-10 font-bold">Find people like you</h4>
         <h6 class="text-center mb-10 font-bold">Become a member of the biggest worldwide ceramic community. </h6>
         <div class="d-flex justify-content-center">
-          <button class="btn btn-success btn-lg rounded-pill" style="background-color: #d0f779; color: #2e4a19;">Join our community</button>
+          <a href="{{ url('/users') }}" class="btn btn-success btn-lg rounded-pill" style="background-color: #d0f779; color: #2e4a19;">Join our community</a>
         </div>
     </div>
     <div class="w-1/2 ml-auto">
