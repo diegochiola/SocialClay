@@ -34,8 +34,6 @@
 
 <body style="background-color: rgb(200, 174, 255); color: #2e4a19;">
 <main style="height: 80vh; display: flex; justify-content: center; align-items: center;">
-
-
 <div class="container py-4">
         <h2>New User</h2>
         @if($errors->any())
@@ -51,9 +49,9 @@
 	
         <form action="{{url('ceramicArtworks')}}" method="post">
             @csrf
-            password	phone_number	role	location	photo
+
             <div class="mb-3 row">
-                <label for="name" class="col-sm-2 col-form-label"> Name:</label>
+                <label for="name" class="col-sm-10 col-form-label"> Name:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="name" id="name" value="{{old('name')}}" required>
                 </div>
@@ -76,13 +74,13 @@
                     <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" required>
                 </div>
             </div>
-            div clas="mb-3 row">
+            <div clas="mb-3 row">
                 <label for="email" class="col-sm-2 col-form-label">Password:</label>
                 <div class="col-sm-5">
                     <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" required>
                 </div>
             </div>
-            div clas="mb-3 row">
+            <div clas="mb-3 row">
                 <label for="email" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-5">
                     <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" required>
@@ -91,8 +89,8 @@
             <div clas="mb-3 row">
                 <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
                 <div class="col-sm-5">
-                    <input type="photo" class="form-control" name="photo" id="photo" value="{{old('photo')}}" required>
-                </div>
+                    <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
+                </div>   
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>

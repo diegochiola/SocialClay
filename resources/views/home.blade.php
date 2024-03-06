@@ -14,10 +14,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <!-- button join our community -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('/users')}}">Join our community</a>
-        </li>
+         <!-- button join our community -->
+         <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url('/users')}}">Join our community</a>
+          </li>
         <!-- button add ceramicArtwork-->
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{url('/ceramicArtworks/create')}}">Add Ceramic Artwork</a>

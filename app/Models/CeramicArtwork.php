@@ -12,12 +12,13 @@ class CeramicArtwork extends Model
     protected $fillable = ['title', 'description', 'ceramic_technique', 'creadtion_date','photo'];
     public $timestamps = false;
 
-    public function routines()
+    public function ceramicArtworks()
     {
         return $this->belongsToMany(CeramicArtwork::class, 'ceramicartworks'); //establece una relación muchos a muchos 
                                                                             
     }
     
+  
     //protected $table= 'socialclay.ceramic_artworks';
 
 

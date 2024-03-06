@@ -14,6 +14,8 @@ class CeramicArtworkController extends Controller
     public function index()
     {
         //
+        $artworks = CeramicArtwork::all();
+
         return view('ceramicArtworks.index');
     }
 
@@ -36,8 +38,8 @@ class CeramicArtworkController extends Controller
             'title' => 'required|unique:ceramicartworks|max:50',
             'description' => 'required|max:255',
             'ceramic_technique' => 'required|in:Handbuilding,Wheel throwing,Slab building,Coiling',
-            'creation_date' => 'required|date',
-            'photo' => 'required',
+            'creation_date' => 'nullable',
+            'photo' => 'nullable',
         /*], [
             'title.required' => 'Artwork title is mandatory.',
             'title.unique' => 'Artwork titlealready taken, choose another name',
