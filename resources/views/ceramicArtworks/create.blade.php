@@ -6,7 +6,7 @@
 
 <body style="background-color: #FCEC91; color: #C8AEFF;">
  <!-- nav bar -->
- <nav class="navbar navbar-expand-lg" style="background-color: #d0f779; color: #2e4a19;">
+ <nav class="navbar navbar-expand-lg" style="background-color: #C8AEFF; color: #2e4a19;">
     <div class="container-fluid">
             <a class="navbar-brand" href="{{url('/home')}}">
             <img src="{{ asset('images/SocialClay_logo.png') }}" alt="Logo" width="auto" height="26" class="d-inline-block align-text-top">
@@ -32,7 +32,7 @@
         </div>
     </div>
     </nav>
-    
+
 <main style="height: 80vh; display: flex; justify-content: center; align-items: center;">
     <div class="container py-4">
         <h2>New CeramicArtwork</h2>
@@ -61,18 +61,32 @@
                     <input type="text" class="form-control" name="description" id="description" value="{{old('description')}}" required>
                 </div>
             </div>
-            <div clas="mb-3 row">
-                <label for="ceramic_technique" class="col-sm-2 col-form-label">Ceramic Technique:</label>
+            <div class="mb-3 row">
+                <label for="ceramic_technique" class="col-sm-10 col-form-label">Ceramic Technique:</label>
                 <div class="col-sm-5">
-                    <input type="enum" class="form-control" name="ceramic_technique" id="ceramic_technique" value="{{old('ceramic_technique')}}" required>
+                    <select class="form-select" name="ceramic_technique" id="ceramic_technique" required>
+                        <option value="">Select a technique</option>
+                        <option value="Handbuilding">Handbuilding</option>
+                        <option value="Wheel_throwing">Wheel throwing</option>
+                        <option value="Slab_building">Slab building</option>
+                        <option value="Coiling">Coiling</option>
+                        
+                    </select>
                 </div>
             </div>
-            <div clas="mb-3 row">
-                <label for="creation_date" class="col-sm-2 col-form-label">Creation Date:</label>
+            <!-- Creation Date -->
+            <div class="mb-3 row">
+                <label for="creation_date" class="col-sm-10 col-form-label">Creation Date:</label>
                 <div class="col-sm-5">
-                    <input type="text" class="form-control" name="creation_date" id="creation_date" value="{{old('creation_date')}}" required>
+                    <input type="date" class="form-control" name="creation_date" id="creation_date" value="{{old('creation_date')}}" required>
                 </div>
             </div>
+            <script>
+                $(function() {
+                    $("#creation_date").datepicker();
+                });
+            </script>
+
             <div clas="mb-3 row">
                 <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
                 <div class="col-sm-5">
@@ -80,8 +94,9 @@
                 </div>
                 
             </div>
-            <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
-
+            <div clas="mb-3 row">
+                <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
+            </div>
         </form>
     </div>
 </main>
