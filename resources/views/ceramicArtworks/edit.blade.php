@@ -35,7 +35,7 @@
 
 <main style="height: 80vh; display: flex; justify-content: center; align-items: center;">
     <div class="container py-4">
-        <h2>New CeramicArtwork</h2>
+        <h2>Edit CeramicArtwork</h2>
         @if($errors->any())
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <ul>

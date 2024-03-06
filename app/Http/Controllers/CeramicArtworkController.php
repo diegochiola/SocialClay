@@ -14,9 +14,12 @@ class CeramicArtworkController extends Controller
     public function index()
     {
         //
-        $artworks = CeramicArtwork::all();
+        $ceramicArtworks = CeramicArtwork::all();
+        return view('ceramicArtworks.index', ['artworks' => $ceramicArtworks]);
 
-        return view('ceramicArtworks.index');
+        //$ceramicArtworks = CeramicArtwork::all();
+
+        //return view('ceramicArtworks.index');
     }
 
     /*
@@ -37,8 +40,9 @@ class CeramicArtworkController extends Controller
         $request->validate([
             'title' => 'required|unique:ceramic_artworks|max:50',
             'description' => 'required|max:255',
-            'ceramic_technique' => 'required|in:Handbuilding,Wheel throwing,Slab building,Coiling',
+            'ceramic_technique' => 'required|in:Handbuilding,Wheel_throwing,Slab_building,Coiling',
             'creation_date' => 'nullable',
+            'created_by' => 'required|max:125',
             'photo' => 'nullable',
         ]);
     
@@ -48,6 +52,7 @@ class CeramicArtworkController extends Controller
         $ceramicArtwork->description = $request->input('description');
         $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
         $ceramicArtwork->creation_date = $request->input('creation_date');
+        $ceramicArtwork->created_by = $request->input('created_by');
         $ceramicArtwork->photo = $request->input('photo');
         $ceramicArtwork->save(); // lo guardamos
     
@@ -65,24 +70,52 @@ class CeramicArtworkController extends Controller
     /*
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+               //recibe el iddel alumno
+               $ceramicArtwork = CeramicArtwork::find($id); //busque por el id
+               //y muestre los niveles
+               return view('ceramicArtworks.edit', ['ceramicArtwork' => $ceramicArtwork]);
     }
 
     /*
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        //first found the id
+        $ceramicArtwork = CeramicArtwork::findOrFail($id);
+                // validations
+                $request->validate([
+                    'title' => 'required|unique:ceramic_artworks|max:50',
+                    'description' => 'required|max:255',
+                    'ceramic_technique' => 'required|in:Handbuilding,Wheel_throwing,Slab_building,Coiling',
+                    'creation_date' => 'nullable',
+                    'created_by' => 'required|max:125',
+                    'photo' => 'nullable',
+                ]);
+            
+                // save data
+                $ceramicArtwork->title = $request->input('title');
+                $ceramicArtwork->description = $request->input('description');
+                $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
+                $ceramicArtwork->creation_date = $request->input('creation_date');
+                $ceramicArtwork->created_by = $request->input('created_by');
+                $ceramicArtwork->photo = $request->input('photo');
+                $ceramicArtwork->save(); // lo guardamos
+            
+                return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork updated successfully!"]);
+            }
+    
 
     /*
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+            //llamamos a alumno
+            $ceramicArtwork = CeramicArtwork::find($id); //buscamos por el id
+            $ceramicArtwork->delete();
+            return redirect ("ceramicArtworks.index");
     }
 }

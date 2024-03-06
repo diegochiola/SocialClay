@@ -16,15 +16,15 @@
       <ul class="navbar-nav">
          <!-- button join our community -->
          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{url('/users')}}">Join our community</a>
+              <a class="nav-link active" aria-current="page" href="{{url('/users')}}">Our Community</a>
           </li>
-        <!-- button add ceramicArtwork-->
+        <!-- ceramicArtwork-->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('/ceramicArtworks/create')}}">Add Ceramic Artwork</a>
+          <a class="nav-link active" aria-current="page" href="{{url('/ceramicArtworks')}}">Ceramic Artworks</a>
         </li>
         <!-- Be part of our challenges-->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('/challenges')}}">Join our challenges</a>
+          <a class="nav-link active" aria-current="page" href="{{url('/challenges')}}">Challenges</a>
         </li>
       </ul>
     </div>
