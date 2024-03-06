@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         //show users table
         //$users = User::all();
-        return view('users.create');
+        return view('users.index');
     }
 
     /*

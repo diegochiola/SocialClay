@@ -54,6 +54,17 @@ class CeramicArtworkController extends Controller
         $ceramicArtwork->creation_date = $request->input('creation_date');
         $ceramicArtwork->created_by = $request->input('created_by');
         $ceramicArtwork->photo = $request->input('photo');
+        //para guardar la foto en si:
+        /*if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photoData = file_get_contents($photo->getRealPath());
+            $ceramicArtwork->photo = base64_encode($photoData);
+        }*/
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photos');
+            $ceramicArtwork->photo = $photoPath;
+        }
+
         $ceramicArtwork->save(); // lo guardamos
     
         return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork created successfully!"]);
@@ -74,7 +85,6 @@ class CeramicArtworkController extends Controller
     {
                //recibe el iddel alumno
                $ceramicArtwork = CeramicArtwork::find($id); //busque por el id
-               //y muestre los niveles
                return view('ceramicArtworks.edit', ['ceramicArtwork' => $ceramicArtwork]);
     }
 
@@ -87,7 +97,7 @@ class CeramicArtworkController extends Controller
         $ceramicArtwork = CeramicArtwork::findOrFail($id);
                 // validations
                 $request->validate([
-                    'title' => 'required|unique:ceramic_artworks|max:50',
+                    'title' => 'required|unique:ceramic_artworks,title,'.$id.',id|max:50', //debera ignorar el unique porque esta editando el mismo elemento
                     'description' => 'required|max:255',
                     'ceramic_technique' => 'required|in:Handbuilding,Wheel_throwing,Slab_building,Coiling',
                     'creation_date' => 'nullable',
@@ -113,9 +123,9 @@ class CeramicArtworkController extends Controller
      */
     public function destroy($id)
     {
-            //llamamos a alumno
+            
             $ceramicArtwork = CeramicArtwork::find($id); //buscamos por el id
             $ceramicArtwork->delete();
-            return redirect ("ceramicArtworks.index");
+            return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork deleted successfully!"]);
     }
 }
