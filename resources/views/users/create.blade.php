@@ -75,17 +75,31 @@
                 </div>
             </div>
             <div clas="mb-3 row">
-                <label for="email" class="col-sm-2 col-form-label">Password:</label>
+                <label for="passwrod" class="col-sm-2 col-form-label">Password:</label>
                 <div class="col-sm-5">
-                    <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" required>
+                    <input type="password" class="form-control" name="password" id="password" value="{{old('email')}}" required>
                 </div>
             </div>
             <div clas="mb-3 row">
-                <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                <label for="phone_number" class="col-sm-2 col-form-label">Phone Number</label>
                 <div class="col-sm-5">
-                    <input type="email" class="form-control" name="email" id="email" value="{{old('email')}}" required>
+                    <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{old('phone_number')}}" required>
                 </div>
             </div>
+            <!-- Select Role-->
+            <div class="mb-3 row">
+                <label for="role" class="col-sm-10 col-form-label">Role:</label>
+                <div class="col-sm-5">
+                    <select class="form-select" name="role" id="role" required>
+                        <option value="">Select a Role:</option>
+                        <option value="Handbuilding">Artist</option>
+                        <option value="Wheel_throwing">Enthusiast</option>
+                        <option value="Slab_building">Administrator</option>
+                    </select>
+                </div>
+            </div>
+
+
             <div clas="mb-3 row">
                 <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
                 <div class="col-sm-5">
@@ -95,16 +109,7 @@
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>
-</main>
 
-
-
-
-
-
-
-
-</main>
 </body>
 
 
