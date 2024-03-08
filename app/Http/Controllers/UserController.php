@@ -36,9 +36,9 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|unique:users|max:120',
             'surname' => 'required|max:120',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|date|before_or_equal:' . now()->subYears(18)->format('Y-m-d'), //para que sea mayor de edad
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/', //validacion de contraseña
             'phone_number' => 'required|max:20',
             'role' => 'required|in:artist,enthusiast,administrator',
             'location' => 'required|max:250',
