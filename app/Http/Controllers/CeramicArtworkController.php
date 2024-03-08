@@ -69,9 +69,9 @@ class CeramicArtworkController extends Controller
     /*
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+
     }
 
     /*
@@ -98,20 +98,28 @@ class CeramicArtworkController extends Controller
                     'ceramic_technique' => 'required|in:Handbuilding,Wheel_throwing,Slab_building,Coiling',
                     'creation_date' => 'nullable',
                     'created_by' => 'required|max:125',
-                    'photo' => 'nullable|image|max:2048',
+                    //'photo' => 'nullable|image|max:2048',
                 ]);
             
                 // save data
+
                 $ceramicArtwork->title = $request->input('title');
                 $ceramicArtwork->description = $request->input('description');
                 $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
                 $ceramicArtwork->creation_date = $request->input('creation_date');
                 $ceramicArtwork->created_by = $request->input('created_by');
-                //save the picture as BOLOB in my db
-                if ($request->hasFile('photo')) {
+               /*
+              //save the picture as BOLOB in my db
+                // Verificar si el archivo es válido como imagen
+                if ($request->file('photo')->isValid()) {
+                    // Guardar la nueva foto como BLOB en la base de datos
                     $photoData = file_get_contents($request->file('photo')->getRealPath());
                     $ceramicArtwork->photo = $photoData;
+                } else {
+                    // Enviar mensaje de error con más detalles sobre por qué el archivo no es una imagen válida
+                    return back()->withErrors(['photo' => 'The photo must be a valid image.'])->withInput()->withErrors([$request->file('photo')->getErrorMessage()]);
                 }
+                */
 
                 $ceramicArtwork->save(); // lo guardamos
             

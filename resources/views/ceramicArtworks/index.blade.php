@@ -19,11 +19,11 @@
                         <p class="card-text">Ceramic Technique: {{ $artwork->ceramic_technique }}</p>
                         <p class="card-text">Created by: {{ $artwork->created_by }}</p>
                         <div class="btn-group" role="group" aria-label="Artwork Actions">
-                            <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill">Edit</a>
+                            <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF;">Edit</a>
                             <form action="{{ route('ceramicArtworks.destroy', $artwork->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-pill">Delete</button>
+                                <button type="submit" class="btn btn-danger rounded-pill" style="background-color: rgb(255, 117, 111);">Delete</button>
                             </form>
                         </div> 
 
@@ -31,6 +31,16 @@
                 </div>
             </div>
             @endforeach
+        </div>
+        <!-- Boton de + -->
+        <div class="row">
+            <div class="col-md-4 mb-4"> 
+                <div class="card" >
+                    <a href="{{ route('ceramicArtworks.create') }}" class="btn btn-success " style="background-color: #C8AEFF;">
+                        <h3> + </h3>
+                    </a>
+                </div> 
+            </div>
         </div>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
