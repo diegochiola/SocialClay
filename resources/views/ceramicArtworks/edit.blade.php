@@ -1,0 +1,81 @@
+@extends('layout/template')
+@section('title', 'Edit CeramicArtwork | SocialClay')  
+
+
+@section ('content') 
+
+<body style="background-color: #2e4a19; color: #d0f779;">
+    <div class="container py-4">
+        <h2 class="text-center mb-4">Edit CeramicArtwork</h2>
+        @if($errors->any())
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            <div class="row justify-content-center">
+                <form action="{{ url('ceramicArtworks/' . $ceramicArtwork->id) }}" method="post">
+                @csrf
+                @method('PUT')
+                <div class="mb-3 row">
+                    <label for="title" class="col-form-label"> Title:</label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control" name="title" id="title" value="{{ $ceramicArtwork->title }}" required>
+                    </div>
+                </div>
+
+                <div clas="mb-3 row">
+                    <label for="description" class="col-sm-10 col-form-label">Description:</label>
+                    <div class="col-sm-5">
+                    <input type="text" class="form-control" name="description" id="description" value="{{ $ceramicArtwork->description }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="ceramic_technique" class="col-sm-10 col-form-label">Ceramic Technique:</label>
+                    <div class="col-sm-5">
+                        <select class="form-select" name="ceramic_technique" id="ceramic_technique" required>
+                            <option value="">Select a technique</option>
+                            <option value="Handbuilding" {{ $ceramicArtwork->ceramic_technique == 'Handbuilding' ? 'selected' : '' }}>Handbuilding</option>
+                            <option value="Wheel_throwing" {{ $ceramicArtwork->ceramic_technique == 'Wheel_throwing' ? 'selected' : '' }}>Wheel throwing</option>
+                            <option value="Slab_building" {{ $ceramicArtwork->ceramic_technique == 'Slab_building' ? 'selected' : '' }}>Slab building</option>
+                            <option value="Coiling" {{ $ceramicArtwork->ceramic_technique == 'Coiling' ? 'selected' : '' }}>Coiling</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="creation_date" class="col-sm-10 col-form-label">Creation Date:</label>
+                    <div class="col-sm-5">
+                        <input type="date" class="form-control" name="creation_date" id="creation_date" value="{{ $ceramicArtwork->creation_date }}" required>
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="created_by" class="col-sm-10 col-form-label">Created by:</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" name="created_by" id="created_by" value="{{ $ceramicArtwork->created_by }}" required>
+                    </div>
+                </div>
+                <!-- Campo imposible de editar la foto
+                <div class="mb-3 row">
+                    <label for="photo" class="col-sm-10 col-form-label">Photo:</label>
+                    <div class="col-sm-5">
+                        <input type="file" class="form-control" name="photo" id="photo" accept="image/*">
+                    </div>
+                </div>
+                -->
+
+                <div clas="mb-3 row">
+            <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
+        </div>
+            
+                </form>
+            </div>
+
+    </div>
+@endsection
