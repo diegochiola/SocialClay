@@ -13,12 +13,22 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('name', 120);
+            $table->string('surname', 120);
+            $table->date('date_of_birth');
+            $table->string('email', 50)->unique();
+            $table->string('password', 50);
+            $table->string('phone_number', 20);
+            $table->enum('role', ['artist', 'enthusiast', 'administrator']); //llamara a la tabla Roles
+            $table->string('location', 250)->nullable();
+            $table->string('photo')->nullable(); //ubicacion de la foto
+            $table->rememberToken(); //token para la opcion recuerdame
+            $table->timestamps(); //crean el created_at updated_at
+
+            //creamos la conexion con la tabla Roles
+            //$table->foreign('role_id')->references('id')->on('roles');
+            
+
         });
     }
 

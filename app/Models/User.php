@@ -19,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
+        'date_of_birth',
         'email',
         'password',
+        'phone_number',
+        'role',
+        'location',
+        'photo',
     ];
 
     /**
@@ -42,4 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /*function to asign role
+    public function role(){
+        return $this->belongsTo(Role::class,'role_id', 'id');//para saber como se relacionaran las tablas
+    }*/
 }
