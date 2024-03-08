@@ -2,7 +2,7 @@
 @section('title', 'Add CeramicArtwork | SocialClay')  
 
 @section ('content') 
-<body style="background-color: #FCEC91; color: #C8AEFF;">
+<body style="background-color: #2e4a19; color: #d0f779;">
 
 <div class="container py-4">
     <h2>New CeramicArtwork</h2>
@@ -17,7 +17,7 @@
     </div>
     @endif
 	
-    <form action="{{url('ceramicArtworks')}}" method="post">
+    <form  action="{{url('ceramicArtworks')}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 row">
             <label for="title" class="col-form-label"> Title:</label>

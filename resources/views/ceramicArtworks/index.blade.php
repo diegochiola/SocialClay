@@ -5,18 +5,19 @@
 @section('content')
 
 
-<body style="background-color: #FCEC91; ">
+<body style="background-color: #2e4a19; color: #d0f779;">
     <div class="container">
-        <h1 class="mt-5 mb-4">Ceramic Artworks</h1>
+        <h1 class="mt-5 mb-4 text-center">Ceramic Artworks</h1>
         <div class="row">
             @foreach ($artworks as $artwork)
             <div class="col-md-4 mb-4">
-                <div class="card">
-                <img src="{{ asset($artwork->photo) }}" class="card-img-top" alt="Artwork Photo">
+                <div class="card" style="background-color: #d0f779">
+                <img class="card-img-top" style="object-fit: cover; height: 200px;" src="data:image/jpg;base64,{{ base64_encode($artwork->photo) }}" alt="Artwork Photo">
                     <div class="card-body">
-                        <h5 class="card-title">Title: {{ $artwork->title }}</h5>
+                        <h5 class="card-title">{{ $artwork->title }}</h5>
                         <p class="card-text">Description: {{ $artwork->description }}</p>
-                        <p class="card-text"><small class="text-muted">Created by: {{ $artwork->created_by }}</small></p>
+                        <p class="card-text">Ceramic Technique: {{ $artwork->ceramic_technique }}</p>
+                        <p class="card-text">Created by: {{ $artwork->created_by }}</p>
                         <div class="btn-group" role="group" aria-label="Artwork Actions">
                             <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill">Edit</a>
                             <form action="{{ route('ceramicArtworks.destroy', $artwork->id) }}" method="POST">

@@ -43,7 +43,7 @@ class CeramicArtworkController extends Controller
             'ceramic_technique' => 'required|in:Handbuilding,Wheel_throwing,Slab_building,Coiling',
             'creation_date' => 'nullable',
             'created_by' => 'required|max:125',
-            'photo' => 'nullable',
+            'photo' => 'nullable|image|max:2048',
         ]);
     
         // save data
@@ -53,16 +53,12 @@ class CeramicArtworkController extends Controller
         $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
         $ceramicArtwork->creation_date = $request->input('creation_date');
         $ceramicArtwork->created_by = $request->input('created_by');
-        $ceramicArtwork->photo = $request->input('photo');
-        //para guardar la foto en si:
-        /*if ($request->hasFile('photo')) {
-            $photo = $request->file('photo');
-            $photoData = file_get_contents($photo->getRealPath());
-            $ceramicArtwork->photo = base64_encode($photoData);
-        }*/
+       //$ceramicArtwork->photo = $request->input('photo');
+        
+        //save the picture as BOLOB in my db
         if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('photos');
-            $ceramicArtwork->photo = $photoPath;
+            $photoData = file_get_contents($request->file('photo')->getRealPath());
+            $ceramicArtwork->photo = $photoData;
         }
 
         $ceramicArtwork->save(); // lo guardamos
@@ -102,7 +98,7 @@ class CeramicArtworkController extends Controller
                     'ceramic_technique' => 'required|in:Handbuilding,Wheel_throwing,Slab_building,Coiling',
                     'creation_date' => 'nullable',
                     'created_by' => 'required|max:125',
-                    'photo' => 'nullable',
+                    'photo' => 'nullable|image|max:2048',
                 ]);
             
                 // save data
@@ -111,7 +107,12 @@ class CeramicArtworkController extends Controller
                 $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
                 $ceramicArtwork->creation_date = $request->input('creation_date');
                 $ceramicArtwork->created_by = $request->input('created_by');
-                $ceramicArtwork->photo = $request->input('photo');
+                //save the picture as BOLOB in my db
+                if ($request->hasFile('photo')) {
+                    $photoData = file_get_contents($request->file('photo')->getRealPath());
+                    $ceramicArtwork->photo = $photoData;
+                }
+
                 $ceramicArtwork->save(); // lo guardamos
             
                 return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork updated successfully!"]);

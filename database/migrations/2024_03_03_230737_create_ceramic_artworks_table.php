@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('ceramic-Technique', ['Handbuilding', 'Throwing on the Wheel', 'Slip Casting', 'Press Molding', 'Extrusion']); //ceramic technique enum
             $table->date('creation_date')->nullable();
             $table->string('created_by', 120);
-            $table->string('photo')->nullable();
+            $table->binary('photo')->nullable();
             //$table->unsignedBigInteger('user_id');
             $table->timestamps();
             
