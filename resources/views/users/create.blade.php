@@ -19,7 +19,7 @@
 </div>
         @endif
 	
-        <form action="{{url('ceramicArtworks')}}" method="post">
+        <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3 row">
@@ -49,7 +49,7 @@
             <div clas="mb-3 row">
                 <label for="passwrod" class="col-sm-2 col-form-label">Password:</label>
                 <div class="col-sm-5">
-                    <input type="password" class="form-control" name="password" id="password" value="{{old('email')}}" required>
+                    <input type="password" class="form-control" name="password" id="password" value="{{old('password')}}" required>
                 </div>
             </div>
             <div clas="mb-3 row">
@@ -64,13 +64,19 @@
                 <div class="col-sm-5">
                     <select class="form-select" name="role" id="role" required>
                         <option value="">Select a Role:</option>
-                        <option value="Handbuilding">Artist</option>
-                        <option value="Wheel_throwing">Enthusiast</option>
-                        <option value="Slab_building">Administrator</option>
+                        <option value="artist'">Artist</option>
+                        <option value="enthusiast'">Enthusiast</option>
+                        <option value="administrator">Administrator</option>
                     </select>
                 </div>
             </div>
 
+            <div clas="mb-3 row">
+                <label for="location" class="col-sm-2 col-form-label">Location:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="location" id="location" value="{{old('location')}}" required>
+                </div>
+            </div>
 
             <div clas="mb-3 row" style="padding-bottom: 20px;">
                 <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
