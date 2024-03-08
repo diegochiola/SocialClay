@@ -4,9 +4,9 @@
 
 @section('content')
 
-<body style="background-color: rgb(200, 174, 255); color: #2e4a19;">
+<body style="background-color: rgb(200, 174, 255); color: #d0f779;">
 <main style="display: flex; justify-content: center; align-items: center;">
-<div class="container py-4">
+<div class="container py-4 text-8xl" style="font-family: Clearface-Serial-Light-RegularItalic;">
         <h2>New User</h2>
         @if($errors->any())
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -78,7 +78,7 @@
                     <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
                 </div>   
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="submit" class="btn btn-success " style="background-color:#d0f779;">Submit</button>
         </form>
     </div>
 

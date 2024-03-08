@@ -6,7 +6,7 @@
 
 
 <body style="background-color: #2e4a19; color: #d0f779;">
-    <div class="container">
+    <div class="container" style="font-family: Clearface-Serial-Light-RegularItalic;">
         <h1 class="mt-5 mb-4 text-center">Ceramic Artworks</h1>
         <div class="row">
             @foreach ($artworks as $artwork)
@@ -19,7 +19,7 @@
                         <p class="card-text">Ceramic Technique: {{ $artwork->ceramic_technique }}</p>
                         <p class="card-text">Created by: {{ $artwork->created_by }}</p>
                         <div class="btn-group" role="group" aria-label="Artwork Actions">
-                            <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF;">Edit</a>
+                            <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
                             <form action="{{ route('ceramicArtworks.destroy', $artwork->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
