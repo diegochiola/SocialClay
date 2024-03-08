@@ -8,7 +8,7 @@
 <main style="display: flex; justify-content: center; align-items: center;">
 <div class="container py-4 text-8xl" style="font-family: Clearface-Serial-Light-RegularItalic;">
         <h2>New User</h2>
-        @if($errors->any())
+        @if($errors->any()) 
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
     <ul>
         @foreach($errors->all() as $error)
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div clas="mb-3 row">
-                <label for="phone_number" class="col-sm-2 col-form-label">Phone Number</label>
+                <label for="phone_number" class="col-sm-2 col-form-label">Phone Number:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{old('phone_number')}}" required>
                 </div>
@@ -64,8 +64,8 @@
                 <div class="col-sm-5">
                     <select class="form-select" name="role" id="role" required>
                         <option value="">Select a Role:</option>
-                        <option value="artist'">Artist</option>
-                        <option value="enthusiast'">Enthusiast</option>
+                        <option value="artist">Artist</option>
+                        <option value="enthusiast">Enthusiast</option>
                         <option value="administrator">Administrator</option>
                     </select>
                 </div>

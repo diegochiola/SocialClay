@@ -68,9 +68,9 @@ class UserController extends Controller
     /*
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user= User::find($id);
     }
 
     /*
@@ -93,7 +93,7 @@ class UserController extends Controller
         $user = User::find($id); //busque por el id
         //Agregamos validaciones
         $request->validate([
-            'name' => 'required|unique:users|max:120',
+            'name' => 'required|unique:users,name,'.$id.',id|max:120',
             'surname' => 'required|max:120',
             'date_of_birth' => 'required|date',
             'email' => 'required|email',

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone_number', 20);
             $table->enum('role', ['artist', 'enthusiast', 'administrator']); //llamara a la tabla Roles
             $table->string('location', 250)->nullable();
-            $table->string('photo')->nullable(); //ubicacion de la foto
+            $table->binary('photo')->nullable(); //ubicacion de la foto
             $table->rememberToken(); //token para la opcion recuerdame
             $table->timestamps(); //crean el created_at updated_at
 
