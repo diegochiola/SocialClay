@@ -6,10 +6,11 @@
 <body style="background-color: #2e4a19; color: #d0f779;">
 
 <div style="height: 80vh; display: flex; justify-content: center; align-items: center;">
-    <div class="container py-4 text-center" >
+    <div class="container py-4 text-center" style="font-family: Clearface-Serial-Light-RegularItalic;">
+    <img src="{{ asset('images/Socialclay_imago.png') }}" alt="imago" class="mx-auto max-w-full h-auto">
         <h2>Validation message</h2>
         <div class="text-center text-gray-500 mb-4">
-            <p>{{ $msg }}</p>
+            <h5>{{ $msg }}</h5>
             
         </div>
     </div>
