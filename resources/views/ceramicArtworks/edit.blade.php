@@ -6,18 +6,17 @@
 
 <body style="background-color: #FCEC91; color: #C8AEFF;">
 
-<div style="display: flex; justify-content: center; align-items: center;">
     <div class="container py-4">
         <h2>Edit CeramicArtwork</h2>
         @if($errors->any())
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <ul>
+        <ul>
         @foreach($errors->all() as $error)
         <li>{{$error}}</li>
         @endforeach
-    </ul>
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+        </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         @endif
 	
         <form action="{{ url('ceramicArtworks/' . $ceramicArtwork->id) }}" method="post">
@@ -69,5 +68,5 @@
                 <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
             </div>
         </form>
-    </div>
+    
 </div>

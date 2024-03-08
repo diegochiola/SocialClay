@@ -1,22 +1,19 @@
 @extends('layout/template')
 @section('title', 'Add CeramicArtwork | SocialClay')  
 
-
 @section ('content') 
-
 <body style="background-color: #FCEC91; color: #C8AEFF;">
 
-<div style="display: flex; justify-content: center; align-items: center;">
-    <div class="container py-4">
-        <h2>New CeramicArtwork</h2>
-        @if($errors->any())
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <ul>
-        @foreach($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-    </ul>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container py-4">
+    <h2>New CeramicArtwork</h2>
+    @if($errors->any())
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
 	
@@ -24,9 +21,9 @@
         @csrf
         <div class="mb-3 row">
             <label for="title" class="col-form-label"> Title:</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" required>
-                </div>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" required>
+            </div>
         </div>
         <div clas="mb-3 row">
             <label for="description" class="col-sm-2 col-form-label">Description:</label>
@@ -43,7 +40,6 @@
                     <option value="Wheel_throwing">Wheel throwing</option>
                     <option value="Slab_building">Slab building</option>
                     <option value="Coiling">Coiling</option>
-                    
                 </select>
             </div>
         </div>
@@ -71,11 +67,10 @@
             <div class="col-sm-5">
                 <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
             </div>
-            
         </div>
         <div clas="mb-3 row">
             <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
         </div>
     </form>
-    </div>
 </div>
+@endsection
