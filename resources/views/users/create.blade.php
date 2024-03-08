@@ -72,13 +72,13 @@
             </div>
 
 
-            <div clas="mb-3 row">
+            <div clas="mb-3 row" style="padding-bottom: 20px;">
                 <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
                 <div class="col-sm-5">
                     <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
                 </div>   
             </div>
-            <button type="submit" class="btn btn-success " style="background-color:#d0f779;">Submit</button>
+            <button type="submit" class="btn btn-success rounded-pill" style="background-color:#d0f779;">Submit</button>
         </form>
     </div>
 

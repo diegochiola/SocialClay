@@ -79,7 +79,7 @@ class CeramicArtworkController extends Controller
      */
     public function edit($id)
     {
-               //recibe el iddel alumno
+               //recibe el iddel artwork
                $ceramicArtwork = CeramicArtwork::find($id); //busque por el id
                return view('ceramicArtworks.edit', ['ceramicArtwork' => $ceramicArtwork]);
     }
