@@ -4,7 +4,7 @@
 
 @section('content')
 
-<body style="background-color: rgb(200, 174, 255); color: #d0f779;">
+<body style="background-color: rgb(200, 174, 255); color: #2e4a19">
 <main style="display: flex; justify-content: center; align-items: center;">
 <div class="container py-4 text-8xl" style="font-family: Clearface-Serial-Light-RegularItalic;">
         <h2>New User</h2>
@@ -53,6 +53,12 @@
                 </div>
             </div>
             <div clas="mb-3 row">
+                <label class="col-sm-2 col-form-label" for="password_confirmation">Confirm Password:</label>
+                <div class="col-sm-5">
+                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                </div>
+            </div>
+            <div clas="mb-3 row">
                 <label for="phone_number" class="col-sm-2 col-form-label">Phone Number:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="phone_number" id="phone_number" value="{{old('phone_number')}}" required>
@@ -84,7 +90,7 @@
                     <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
                 </div>   
             </div>
-            <button type="submit" class="btn btn-success rounded-pill" style="background-color:#d0f779;">Submit</button>
+            <button type="submit" class="btn btn-success rounded-pill " style="background-color:#d0f779; color:#2e4a19;">Submit</button>
         </form>
     </div>
 
