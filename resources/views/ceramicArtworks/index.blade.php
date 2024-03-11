@@ -17,7 +17,7 @@
                         <h5 class="card-title">{{ $artwork->title }}</h5>
                         <p class="card-text">Description: {{ $artwork->description }}</p>
                         <p class="card-text">Ceramic Technique: {{ $artwork->ceramic_technique }}</p>
-                        <p class="card-text">Created by: {{ $artwork->created_by }}</p>
+                        <p class="card-text">Created by: {{ $artwork->user->name }}</p>
                         <div class="btn-group" role="group" aria-label="Artwork Actions">
                             <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
                             <form action="{{ route('ceramicArtworks.destroy', $artwork->id) }}" method="POST">

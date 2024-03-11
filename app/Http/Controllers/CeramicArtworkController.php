@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CeramicArtwork;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class CeramicArtworkController extends Controller
 {
@@ -13,7 +14,9 @@ class CeramicArtworkController extends Controller
     public function index()
     {
         //
-        $ceramicArtworks = CeramicArtwork::all();
+        //$ceramicArtworks = CeramicArtwork::all();
+        $ceramicArtworks = CeramicArtwork::with('user')->get();
+
         return view('ceramicArtworks.index', ['artworks' => $ceramicArtworks]);
 
         //$ceramicArtworks = CeramicArtwork::all();
@@ -26,8 +29,12 @@ class CeramicArtworkController extends Controller
      */
     public function create()
     {
-        //
-        return view('ceramicArtworks.create');
+        // get all users
+        $users = User::all();
+    
+        // show the user in view
+        return view('ceramicArtworks.create', ['users' => $users]);
+        //return view('ceramicArtworks.create');
     }
 
     /*
@@ -80,7 +87,8 @@ class CeramicArtworkController extends Controller
     {
                //recibe el iddel artwork
                $ceramicArtwork = CeramicArtwork::find($id); //busque por el id
-               return view('ceramicArtworks.edit', ['ceramicArtwork' => $ceramicArtwork]);
+               $users = User::all();
+               return view('ceramicArtworks.edit', ['ceramicArtwork' => $ceramicArtwork, 'users' => $users]);
     }
 
     /*

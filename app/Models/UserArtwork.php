@@ -12,11 +12,11 @@ class UserArtwork extends Model
 
     //foreign keys to connect intermidate table
     public function user(){
-        return $this->belongsTo(User::class, 'user_id'); 
+        return $this->belongsTo(User::class, 'user_id'); //relation to user model
     }
 
     public function ceramicArtwork(){
-        return $this->belongsTo(CeramicArtwork::class, 'ceramic_artwork_id'); 
+        return $this->belongsTo(CeramicArtwork::class, 'ceramic_artwork_id'); //relation to ceramicArtwork model
     }
 
 

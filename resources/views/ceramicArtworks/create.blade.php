@@ -57,11 +57,16 @@
                 $("#creation_date").datepicker();
             });
         </script>
-
+        <!-- Connect DB with user selecter -->
         <div clas="mb-3 row">
             <label for="created_by" class="col-sm-2 col-form-label">Created by:</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" name="created_by" id="created_by" value="{{old('created_by')}}" required>
+                <select class="form-select" name="created_by" id="created_by" required>
+                    <option value="">Select a user</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                </select>            
             </div>
         </div>
         <div clas="mb-3 row" style="padding-bottom: 20px;">

@@ -49,9 +49,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function users()
-    {
+    public function users(){
         return $this->belongsToMany(User::class, 'users'); //establece una relación muchos a muchos 
                                                                             
     }
+    public function artworks(){
+    return $this->belongsToMany(CeramicArtwork::class, 'user_artworks');
+}
 }
