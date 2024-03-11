@@ -5,7 +5,7 @@
 @section('content')
 
 
-<body style="background-color: rgb(200, 174, 255); color: #2e4a19">
+<body style="background-color: rgb(200, 174, 255); color: #d0f779;">
     <div class="container" style="font-family: Clearface-Serial-Light-RegularItalic;">
         <h1 class="mt-5 mb-4 text-center">Our Community</h1>
         <div class="row">

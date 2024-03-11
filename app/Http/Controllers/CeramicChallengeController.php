@@ -16,7 +16,7 @@ class ceramicChallengeController extends Controller
     {
         //
         $ceramicChallenges = CeramicChallenge::all();
-        return view('ceramicChallenges.index', ['artworks' => $ceramicChallenges]);
+        return view('ceramicChallenges.index', ['ceramicChallenges' => $ceramicChallenges]);
 
         //$ceramicChallenges = ceramicCh$ceramicChallenge::all();
 

@@ -38,7 +38,11 @@
         </li>
         <!-- Be part of our challenges-->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('/challenges')}}">Challenges</a>
+          <a class="nav-link active" aria-current="page" href="{{url('/ceramicChallenges')}}">Challenges</a>
+        </li>
+        <!-- Add challenges-->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url('/ceramicChallenges/create')}}">Add Challenge</a>
         </li>
       </ul>
     </div>
