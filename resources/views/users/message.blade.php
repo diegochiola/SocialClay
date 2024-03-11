@@ -3,7 +3,7 @@
 @section('title', 'Confirmation Message')
 
 @section('content')
-<body style="background-color: #2e4a19; color: #d0f779;">
+<body style="background-color: rgb(200, 174, 255); color: #d0f779;">
 
 <div style="height: 80vh; display: flex; justify-content: center; align-items: center;">
     <div class="container py-4 text-center" style="font-family: Clearface-Serial-Light-RegularItalic;">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="w-50 ml-auto d-none d-md-block">
-    <img src="{{ asset('images/message.png') }}" alt="message img" class="mx-auto max-w-full h-auto">
+    <img src="{{ asset('images/user.png') }}" alt="user img" class="mx-auto max-w-full h-auto">
     </div>
    
 </div>
