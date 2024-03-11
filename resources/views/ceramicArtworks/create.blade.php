@@ -73,13 +73,6 @@
         <div clas="mb-3 row">
             <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
         </div>
-       <!--
-        <div class="col-md-3">
-            <div>
-                <img src="{{ asset('images/newCeramicartwork.png') }}" alt="newCeramicArtwork img" class="img-fluid">
-            </div>
-            </div>
-        --> 
     </form>
 </div>
 @endsection

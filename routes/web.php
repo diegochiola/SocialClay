@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CeramicArtworkController;
+use App\Http\Controllers\CeramicChallengeController;
 use App\Http\Controllers\Challenges;
 use App\Http\Controllers\UserController; //para poder trabajar con la clase UserController
 use App\Models\CeramicArtwork;
@@ -28,6 +29,8 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 //Route::get('users',[Usercontroller::class, 'index']);
 //Route::get('users/create',[Usercontroller::class, 'create']);
 Route::resource('/ceramicArtworks',CeramicArtworkController::class); //route to ArtworkController
-//Route::resource('/challenges',Challenges::class); 
+Route::resource('/ceramicChallenges',CeramicChallengeController::class); 
 // para el edit:
 Route::put('/ceramicArtworks/{id}', [CeramicArtworkController::class, 'update'])->name('ceramicArtworks.update');
+Route::put('/ceramicChallenges/{id}', [CeramicChallengeController::class, 'update'])->name('ceramicChallenges.update');
+Route::get('/ceramicChallenges/{id}/edit', [CeramicChallengeController::class, 'edit'])->name('ceramicChallenges.edit');

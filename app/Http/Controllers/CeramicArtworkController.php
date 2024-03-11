@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\CeramicArtwork;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class CeramicArtworkController extends Controller
