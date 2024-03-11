@@ -13,8 +13,8 @@ class UserController extends Controller
     public function index()
     {
         //show users table
-        //$users = User::all();
-        return view('users.index');
+        $users = User::all();
+        return view('users.index',['users' => $users]);
     }
 
     /*
@@ -36,13 +36,13 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|unique:users|max:120',
             'surname' => 'required|max:120',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|date|before_or_equal:' . now()->subYears(18)->format('Y-m-d'), //para que sea mayor de edad
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|confirmed|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/', //validacion de contraseña
             'phone_number' => 'required|max:20',
             'role' => 'required|in:artist,enthusiast,administrator',
             'location' => 'required|max:250',
-            'photo' => 'nullable',
+            'photo' => 'nullable|image|max:2048',
         ]);
         //save data
         $user = new User();
@@ -54,7 +54,12 @@ class UserController extends Controller
         $user->phone_number = $request->input('phone_number');
         $user->role = $request->input('role');
         $user->location = $request->input('location');
-        $user->photo = $request->input('photo');
+        
+         //save the picture as BOLOB in my db
+         if ($request->hasFile('photo')) {
+            $photoData = file_get_contents($request->file('photo')->getRealPath());
+            $user->photo = $photoData;
+        }
         $user->save(); //save
 
         return view("users.message", ['msg'=> 'User successfully created!']); //show view with message
@@ -63,32 +68,65 @@ class UserController extends Controller
     /*
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user= User::find($id);
     }
 
     /*
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id)
     {
         //
+           //recibe el iddel alumno
+           $user = User::find($id); //busque por el id
+           return view('users.edit', ['user' => $user]);
     }
 
     /*
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         //
+        $user = User::find($id); //busque por el id
+        //Agregamos validaciones
+        $request->validate([
+            'name' => 'required|unique:users,name,'.$id.',id|max:120',
+            'surname' => 'required|max:120',
+            'date_of_birth' => 'required|date',
+            'email' => 'required|email',
+            'password' => 'required',
+            'phone_number' => 'required|max:20',
+            'role' => 'required|in:artist,enthusiast,administrator',
+            'location' => 'required|max:250',
+            //'photo' => 'nullable|image|max:2048',
+        ]);
+         // save data
+         $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
+        $user->date_of_birth = $request->input('date_of_birth');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->phone_number = $request->input('phone_number');
+        $user->role = $request->input('role');
+        $user->location = $request->input('location');
+        //next version update photo
+
+        $user->save(); // lo guardamos
+            
+        return view("users.message", ['msg' => "User updated successfully!"]);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id); //buscamos por el id
+            $user->delete();
+            return view("users.message", ['msg' => "User deleted successfully!"]);
     }
 }

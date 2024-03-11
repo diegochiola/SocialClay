@@ -5,8 +5,8 @@
 @section ('content') 
 
 <body style="background-color: #2e4a19; color: #d0f779;">
-    <div class="container py-4">
-        <h2 class="text-center mb-4">Edit CeramicArtwork</h2>
+    <div class="container py-4" style="font-family: Clearface-Serial-Light-RegularItalic;">
+        <h2 class="text mb-4">Edit Ceramic Artwork</h2>
         @if($errors->any())
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 <ul>
@@ -71,7 +71,7 @@
                 -->
 
                 <div clas="mb-3 row">
-            <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
+            <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
         </div>
             
                 </form>

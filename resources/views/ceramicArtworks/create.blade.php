@@ -4,8 +4,8 @@
 @section ('content') 
 <body style="background-color: #2e4a19; color: #d0f779;">
 
-<div class="container py-4">
-    <h2>New CeramicArtwork</h2>
+<div class="container py-4" style="font-family: Clearface-Serial-Light-RegularItalic;">
+    <h2>New Ceramic Artwork</h2>
     @if($errors->any())
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <ul>
@@ -19,6 +19,8 @@
 	
     <form  action="{{url('ceramicArtworks')}}" method="post" enctype="multipart/form-data">
         @csrf
+        <div class="row">
+
         <div class="mb-3 row">
             <label for="title" class="col-form-label"> Title:</label>
             <div class="col-sm-5">
@@ -62,15 +64,22 @@
                 <input type="text" class="form-control" name="created_by" id="created_by" value="{{old('created_by')}}" required>
             </div>
         </div>
-        <div clas="mb-3 row">
+        <div clas="mb-3 row" style="padding-bottom: 20px;">
             <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
             <div class="col-sm-5">
                 <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
             </div>
         </div>
         <div clas="mb-3 row">
-            <button type="submit" class="btn btn-success" style="background-color: #C8AEFF;">Submit</button>
+            <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
         </div>
+       <!--
+        <div class="col-md-3">
+            <div>
+                <img src="{{ asset('images/newCeramicartwork.png') }}" alt="newCeramicArtwork img" class="img-fluid">
+            </div>
+            </div>
+        --> 
     </form>
 </div>
 @endsection

@@ -34,7 +34,7 @@
         </li>
         <!-- Add ceramicArtwork-->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{url('/ceramicArtworks/create')}}">Add Ceramic Artworks</a>
+          <a class="nav-link active" aria-current="page" href="{{url('/ceramicArtworks/create')}}">Add Ceramic Artwork</a>
         </li>
         <!-- Be part of our challenges-->
         <li class="nav-item">
