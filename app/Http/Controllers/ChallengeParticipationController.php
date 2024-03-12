@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CeramicChallenge;
+use App\Models\CeramicArtwork;
 use App\Models\User;
 use App\Models\ChallengeParticipation;
-use Illuminate\Support\Facades\Auth;
+
  
 class ChallengeParticipationController extends Controller
 {
@@ -17,9 +18,17 @@ class ChallengeParticipationController extends Controller
             if (!$ceramicChallenge) {
                 return view("ceramicChallenges.message", ['msg' => "Ceramic Challenge not found."]);
             }
+            $ceramicArtworks = CeramicArtwork::all();
             $users = User::all();
-            $ceramicArtworks = Auth::user()->ceramicArtworks;
-            return view("challengeParticipation.create", ['ceramicChallenge' => $ceramicChallenge, 'users' => $users, 'ceramicArtworks' => $ceramicArtworks]);
+            
+            
+
+        return view("challengeParticipation.create", [
+            'ceramicChallenge' => $ceramicChallenge,
+            'users' => $users,
+            'ceramicArtworks' => $ceramicArtworks, 
+        ]);
+            
         }
     
 
@@ -29,13 +38,15 @@ class ChallengeParticipationController extends Controller
             'user_id' => 'required|exists:users,id',
             'ceramic_artwork_id' => 'required|exists:ceramic_artworks,id',
         ]);
+        $user = User::find($request->input('user_id'));
+        $ceramicArtworks = $user->ceramicArtworks;
 
         // Crear una nueva participación
         ChallengeParticipation::create([
             'user_id' => $request->user_id,
             'ceramic_challenge_id' => $id,
             'ceramic_artwork_id' => $request->input('ceramic_artwork_id'),
-            //'ceramic_artwork_id' => $request->ceramic_artwork_id, 
+            
 
         ]);
 

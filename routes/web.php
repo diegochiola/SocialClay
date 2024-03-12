@@ -34,6 +34,9 @@ Route::put('/ceramicArtworks/{id}', [CeramicArtworkController::class, 'update'])
 Route::put('/ceramicChallenges/{id}', [CeramicChallengeController::class, 'update'])->name('ceramicChallenges.update');
 Route::get('/ceramicChallenges/{id}/edit', [CeramicChallengeController::class, 'edit'])->name('ceramicChallenges.edit');
 //Route::post('/ceramicChallenges/{id}/participate', [CeramicChallengeController::class, 'participate'])->name('ceramicChallenges.participate');
-Route::post('/challengeParticipation/{id}', [ChallengeParticipationController::class, 'create'])->name('challengeParticipation.create');
+Route::get('/challengeParticipation/{id}/create', [ChallengeParticipationController::class, 'create'])->name('challengeParticipation.create');
 
-Route::post('/challengeParticipation/{id}', [ChallengeParticipationController::class, 'store'])->name('challengeParticipation.store');
+//Route::get('/challengeParticipation/{id}/create', [ChallengeParticipationController::class, 'create'])->name('challengeParticipation.create');
+
+Route::post('/challengeParticipation/{id}/create', [ChallengeParticipationController::class, 'store'])->name('challengeParticipation.store');
+

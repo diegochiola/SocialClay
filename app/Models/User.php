@@ -52,7 +52,7 @@ class User extends Authenticatable
     public function users(){
         return $this->belongsToMany(User::class, 'users'); //establece una relación muchos a muchos                                                                        
     }
-    public function artworks(){
+    public function ceramicArtworks(){
         return $this->belongsToMany(CeramicArtwork::class, 'challenge_participation')->withTimestamps();
     }
     public function challenges(){

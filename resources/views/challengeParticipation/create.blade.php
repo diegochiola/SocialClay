@@ -31,7 +31,7 @@
                         <label for="ceramic_artwork_id" class="col-sm-2 col-form-label">Select Artwork:</label>
                         <div class="col-sm-5">
                             <select class="form-select" name="ceramic_artwork_id" id="ceramic_artwork_id" required>
-                                <option value="">Select an artwork</option>
+                                <option value="">Select an artwork:</option>
                                 @foreach($ceramicArtworks as $artwork)
                                     <option value="{{ $artwork->id }}">{{ $artwork->title }}</option>
                                 @endforeach

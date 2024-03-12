@@ -20,7 +20,7 @@
                         <p class="card-text">End Date: {{ $ceramicChallenge->end_date }}</p>
                         <div class="btn-group" role="group" aria-label="Challenges Actions">
                             <!-- Boton de Participate -->
-                            <form action="{{ route('challengeParticipation.create', $ceramicChallenge->id) }}" method="POST">
+                            <form action="{{ route('challengeParticipation.create', $ceramicChallenge->id) }}" method="GET">
                                 @csrf
                                 <button type="submit" class="btn btn-primary rounded-pill" style="background-color: #2e4a19; margin-right: 5px;">Participate</button>
                             </form>       
