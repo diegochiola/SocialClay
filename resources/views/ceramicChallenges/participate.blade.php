@@ -16,7 +16,7 @@
                 <p class="card-text">Start Date: {{ $ceramicChallenge->start_date }}</p>
                 <p class="card-text">End Date: {{ $ceramicChallenge->end_date }}</p>
                
-                <form action="{{ route('ceramicChallenge.participate', $ceramicChallenge->id) }}" method="POST">                    
+                <form action="{{ route('ceramicChallenges.participate', $ceramicChallenge->id) }}" method="POST">                    
                 @csrf
                     <div class="form-group">
                         <label for="user_id">Select Your Name:</label>
@@ -25,7 +25,7 @@
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> 
                     <button type="submit" class="btn btn-primary">Participate</button>
                 </form>
                

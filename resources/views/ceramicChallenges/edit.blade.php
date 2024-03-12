@@ -18,9 +18,9 @@
             </div>
             @endif
             <div class="row justify-content-center">
-                <form action="{{ url('ceramicChallenge/' . $ceramicChallenge->id) }}" method="post">
-                @csrf
-                @method('PUT')
+            <form action="{{ route('ceramicChallenges.update', $ceramicChallenge->id) }}" method="post">
+            @csrf
+            @method('PUT')
                 <div class="mb-3 row">
                     <label for="title" class="col-form-label"> Title:</label>
                     <div class="col-sm-5">
