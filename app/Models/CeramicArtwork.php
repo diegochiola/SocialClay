@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CeramicArtwork extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'ceramic_artworks';
     protected $fillable = ['title', 'description', 'ceramic_technique', 'creadtion_date','photo'];
     
