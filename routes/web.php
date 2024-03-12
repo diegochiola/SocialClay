@@ -2,6 +2,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CeramicArtworkController;
 use App\Http\Controllers\CeramicChallengeController;
+use App\Http\Controllers\ChallengeParticipationController;
 use App\Http\Controllers\UserController; 
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,7 @@ Route::resource('/ceramicChallenges',CeramicChallengeController::class);
 Route::put('/ceramicArtworks/{id}', [CeramicArtworkController::class, 'update'])->name('ceramicArtworks.update');
 Route::put('/ceramicChallenges/{id}', [CeramicChallengeController::class, 'update'])->name('ceramicChallenges.update');
 Route::get('/ceramicChallenges/{id}/edit', [CeramicChallengeController::class, 'edit'])->name('ceramicChallenges.edit');
-Route::post('/ceramicChallenges/{id}/participate', [CeramicChallengeController::class, 'participate'])->name('ceramicChallenges.participate');
+//Route::post('/ceramicChallenges/{id}/participate', [CeramicChallengeController::class, 'participate'])->name('ceramicChallenges.participate');
+Route::post('/challengeParticipation/{id}', [ChallengeParticipationController::class, 'create'])->name('challengeParticipation.create');
+
+Route::post('/challengeParticipation/{id}', [ChallengeParticipationController::class, 'store'])->name('challengeParticipation.store');

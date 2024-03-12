@@ -15,18 +15,12 @@ class CeramicChallengeController extends Controller
         $ceramicChallenges = CeramicChallenge::all();
         return view('ceramicChallenges.index', ['ceramicChallenges' => $ceramicChallenges]);
 
-        //$ceramicChallenges = ceramicCh$ceramicChallenge::all();
-
-        //return view('ceramicChallenges.index');
     }
 
     /*
      * Show the form for creating a new resource.
      */
     public function create(){
-        //$users = User::all();
-        //$ceramicChallenge = new CeramicChallenge();
-        //return view('ceramicChallenges.participate', ['users' => $users, 'ceramicChallenge' => $ceramicChallenge]);
         return view('ceramicChallenges.create');
     }
 
@@ -106,53 +100,7 @@ class CeramicChallengeController extends Controller
             return view("ceramicChallenges.message", ['msg' => "Ceramic Challenge deleted successfully!"]);
     }
 
-   /* public function participate(Request $request, $id){
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-        ]);
-    
-        // Buscar el desafío de cerámica
-        $ceramicChallenge = CeramicChallenge::findOrFail($id);
-    
-        // Obtener todos los usuarios
-        $users = User::all();
-    
-        // Verificar si el desafío de cerámica y los usuarios están disponibles
-        if (!$ceramicChallenge) {
-            return view("ceramicChallenges.message", ['msg' => "Ceramic Challenge not found!"]);
-        }
-    
-        if ($users->isEmpty()) {
-            return view("ceramicChallenges.message", ['msg' => "No users available!"]);
-        }
-    
-        // Obtener el ID del usuario del formulario
-        $userId = $request->input('user_id');
-    
-        // Adjuntar el usuario al desafío de cerámica
-        $ceramicChallenge->users()->attach($userId);
-        return view('ceramicChallenges.participate', ['ceramicChallenge' => $ceramicChallenge, 'users' => $users]);
-        //return view("ceramicChallenges.message", ['msg' => "User added to the challenge successfully!"]);
-    }
-   */
-  public function participate(Request $request, $id){
-    // Validaciones
-    $request->validate([
-        'user_id' => 'required|exists:users,id',
-    ]);
-
-    // Buscar el desafío de cerámica
-    $ceramicChallenge = CeramicChallenge::findOrFail($id);
-
-    // Obtener el ID del usuario del formulario
-    $userId = $request->input('user_id');
-
-    // Adjuntar el usuario al desafío de cerámica
-    $ceramicChallenge->users()->attach($userId);
-
-    // Redirigir al usuario a la vista de éxito o a otra vista adecuada
-    return redirect()->route('ceramicChallenges.participate', $ceramicChallenge->id)->with('success', 'User added to the challenge successfully!');
-}
+ 
 }
 
 
