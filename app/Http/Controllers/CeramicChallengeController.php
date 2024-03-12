@@ -3,18 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\CeramicChallenge;
-use App\Models\CeramiChallenge;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ceramicChallengeController extends Controller
+class CeramicChallengeController extends Controller
 {
     /*
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index(){
         $ceramicChallenges = CeramicChallenge::all();
         return view('ceramicChallenges.index', ['ceramicChallenges' => $ceramicChallenges]);
 
@@ -26,17 +23,16 @@ class ceramicChallengeController extends Controller
     /*
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-        return view('ceramicChallenges.create');
+    public function create(){
+        $users = User::all();
+        $ceramicChallenge = new CeramicChallenge();
+        return view('ceramicChallenges.participate', ['users' => $users, 'ceramicChallenge' => $ceramicChallenge]);
     }
 
     /*
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // validations
         $request->validate([
             'title' => 'required|unique:ceramic_challenges|max:50',
@@ -59,16 +55,14 @@ class ceramicChallengeController extends Controller
     /*
      * Display the specified resource.
      */
-    public function show($id)
-    {
+    public function show($id){
 
     }
 
     /*
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
+    public function edit($id){
                //recibe el iddel artwork
                $ceramicChallenge = ceramicChallenge::find($id); //busque por el id
                return view('ceramicChallenges.edit', ['ceramicChallenge' => $ceramicChallenge]);
@@ -77,8 +71,7 @@ class ceramicChallengeController extends Controller
     /*
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         //first found the id
         $ceramicChallenge = CeramicChallenge::findOrFail($id);
                 // validations
@@ -104,11 +97,53 @@ class ceramicChallengeController extends Controller
     /*
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
             
             $ceramicChallenge = CeramicChallenge::find($id); //buscamos por el id
             $ceramicChallenge->delete();
             return view("ceramicChallenges.message", ['msg' => "Ceramic Challenge deleted successfully!"]);
     }
+
+   /* public function participate(Request $request, $id){
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+    
+        // Buscar el desafío de cerámica
+        $ceramicChallenge = CeramicChallenge::findOrFail($id);
+    
+        // Obtener todos los usuarios
+        $users = User::all();
+    
+        // Verificar si el desafío de cerámica y los usuarios están disponibles
+        if (!$ceramicChallenge) {
+            return view("ceramicChallenges.message", ['msg' => "Ceramic Challenge not found!"]);
+        }
+    
+        if ($users->isEmpty()) {
+            return view("ceramicChallenges.message", ['msg' => "No users available!"]);
+        }
+    
+        // Obtener el ID del usuario del formulario
+        $userId = $request->input('user_id');
+    
+        // Adjuntar el usuario al desafío de cerámica
+        $ceramicChallenge->users()->attach($userId);
+    
+        return view("ceramicChallenges.message", ['msg' => "User added to the challenge successfully!"]);
+    }*/
+   public function participate(Request $request, $id){
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        $ceramicChallenge = CeramicChallenge::findOrFail($id);
+        $userId = $request->input('user_id');
+        $ceramicChallenge->users()->attach($userId);
+
+        return view("ceramicChallenges.message", ['msg' => "User added to the challenge successfully!"]);
+    }
+
+
+
 }
