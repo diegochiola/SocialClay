@@ -44,16 +44,19 @@ class UserController extends Controller
             'location' => 'required|max:250',
             'photo' => 'nullable|image|max:2048',
         ]);
+        $name = ucwords(strtolower($request->input('name')));
+        $surname = ucwords(strtolower($request->input('surname')));
+        $location = ucwords(strtolower($request->input('location')));
         //save data
         $user = new User();
-        $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
+        $user->name = $name;
+        $user->surname = $surname;
         $user->date_of_birth = $request->input('date_of_birth');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->phone_number = $request->input('phone_number');
         $user->role = $request->input('role');
-        $user->location = $request->input('location');
+        $user->location = $location;
         
          //save the picture as BOLOB in my db
          if ($request->hasFile('photo')) {
@@ -105,15 +108,18 @@ class UserController extends Controller
             'location' => 'required|max:250',
             //'photo' => 'nullable|image|max:2048',
         ]);
-         // save data
-         $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
+        $name = ucwords(strtolower($request->input('name')));
+        $surname = ucwords(strtolower($request->input('surname')));
+        $location = ucwords(strtolower($request->input('location')));
+        // save data
+         $user->name = $name;
+        $user->surname = $surname;
         $user->date_of_birth = $request->input('date_of_birth');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->phone_number = $request->input('phone_number');
         $user->role = $request->input('role');
-        $user->location = $request->input('location');
+        $user->location = $location;
         //next version update photo
 
         $user->save(); // lo guardamos

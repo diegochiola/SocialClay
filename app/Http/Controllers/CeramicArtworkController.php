@@ -5,43 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\CeramicArtwork;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserArtwork;
 
 class CeramicArtworkController extends Controller
 {
     /*
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-        //$ceramicArtworks = CeramicArtwork::all();
+    public function index(){
         $ceramicArtworks = CeramicArtwork::with('user')->get();
-
         return view('ceramicArtworks.index', ['artworks' => $ceramicArtworks]);
-
-        //$ceramicArtworks = CeramicArtwork::all();
-
-        //return view('ceramicArtworks.index');
     }
 
-    /*
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
+    public function create(){
         // get all users
         $users = User::all();
-    
         // show the user in view
         return view('ceramicArtworks.create', ['users' => $users]);
         //return view('ceramicArtworks.create');
     }
 
-    /*
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // validations
         $request->validate([
             'title' => 'required|max:50',
@@ -51,11 +35,13 @@ class CeramicArtworkController extends Controller
             'created_by' => 'required|max:125',
             'photo' => 'nullable|image|max:2048',
         ]);
-    
+        $title = ucwords(strtolower($request->input('title')));
+        $description = ucwords(strtolower($request->input('description')));
+        
         // save data
         $ceramicArtwork = new CeramicArtwork();
-        $ceramicArtwork->title = $request->input('title');
-        $ceramicArtwork->description = $request->input('description');
+        $ceramicArtwork->title = $title;
+        $ceramicArtwork->description = $description;
         $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
         $ceramicArtwork->creation_date = $request->input('creation_date');
         $ceramicArtwork->created_by = $request->input('created_by');
@@ -66,37 +52,29 @@ class CeramicArtworkController extends Controller
             $photoData = file_get_contents($request->file('photo')->getRealPath());
             $ceramicArtwork->photo = $photoData;
         }
-
-        $ceramicArtwork->save(); // lo guardamos
+        //save
+        $ceramicArtwork->save(); 
+        //create relation with userArtwork
+        $userArtwork = new UserArtwork();
+        $userArtwork->user_id = $request->input('created_by'); 
+        $userArtwork->ceramic_artwork_id = $ceramicArtwork->id;
+        $userArtwork->save();
     
         return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork created successfully!"]);
     }
 
-
-    /*
-     * Display the specified resource.
-     */
-    public function show($id)
-    {
+    public function show($id){
 
     }
 
-    /*
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
+    public function edit($id){
                //recibe el iddel artwork
                $ceramicArtwork = CeramicArtwork::find($id); //busque por el id
                $users = User::all();
                return view('ceramicArtworks.edit', ['ceramicArtwork' => $ceramicArtwork, 'users' => $users]);
     }
 
-    /*
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         // first find the record by id
         $ceramicArtwork = CeramicArtwork::findOrFail($id);
         
@@ -109,28 +87,46 @@ class CeramicArtworkController extends Controller
             'created_by' => 'required|max:125',
             //'photo' => 'nullable|image|max:2048', This campus will be repair later
         ]);
-  
+        $title = ucwords(strtolower($request->input('title')));
+        $description = ucwords(strtolower($request->input('description')));
     
         // Update data
-        $ceramicArtwork->title = $request->input('title');
-        $ceramicArtwork->description = $request->input('description');
+        $ceramicArtwork->title = $title;
+        $ceramicArtwork->description = $description;
         $ceramicArtwork->ceramic_technique = $request->input('ceramic_technique');
         $ceramicArtwork->creation_date = $request->input('creation_date');
         $ceramicArtwork->created_by = $request->input('created_by');
-    
+        //save
         $ceramicArtwork->save(); 
+        
+        //create relation with userArtwork
+        $userId = $request->input('created_by');
+        $userArtwork = UserArtwork::where('ceramic_artwork_id', $ceramicArtwork->id)->first();
+        if ($userArtwork) {
+            $userArtwork->user_id = $userId;
+            $userArtwork->save();
+        } else {
+            $newUserArtwork = new UserArtwork();
+            $newUserArtwork->user_id = $userId;
+            $newUserArtwork->ceramic_artwork_id = $ceramicArtwork->id;
+            $newUserArtwork->save();
+        }
     
         return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork updated successfully!"]);
     }
 
-    /*
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-            
-            $ceramicArtwork = CeramicArtwork::find($id); //buscamos por el id
-            $ceramicArtwork->delete();
-            return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork deleted successfully!"]);
+    public function destroy($id){
+            $ceramicArtwork = CeramicArtwork::find($id); 
+            //logic for delet from usearArtwork
+            if ($ceramicArtwork) {
+                $userArtwork = UserArtwork::where('ceramic_artwork_id', $ceramicArtwork->id)->first();
+                if ($userArtwork) {
+                    $userArtwork->delete();
+                }
+                $ceramicArtwork->delete();
+                return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork deleted successfully!"]);
+            } else {
+                return view("ceramicArtworks.message", ['msg' => "Ceramic Artwork not found!"]);
+            }
     }
 }
