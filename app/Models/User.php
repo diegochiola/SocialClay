@@ -58,4 +58,5 @@ class User extends Authenticatable
     public function challenges(){
         return $this->belongsToMany(CeramicChallenge::class, 'challenge_participations')->withTimestamps();
     }
+    
 }

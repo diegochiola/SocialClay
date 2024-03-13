@@ -9,19 +9,27 @@
             <ul class="list-group" >
                 @foreach($challenges as $challenge)
                     <li class="list-group-item" style="background-color: #d0f779">
-                        <h4>Title: {{ $challenge->title }}</h4>
-                        <h5>Participants:</h5>
-                        <ul>
-                            @foreach($challenge->users as $user)
-                                <li>{{ $user->name }}</li>
+                        <div class="row">
+                            <div class="col-md-1">
+                                <img src="{{ asset('images/challenge_participation.png') }}" alt="base img" style="margin-bottom: 10px;">
+                                
+                                </div>
+                            <div class="col-md-6">
+                                <h4>Title: {{ $challenge->title }}</h4>
+                                <h5>Participants:</h5>
                                 <ul>
-                                    @foreach($user->ceramicArtworks as $artwork)
-                                        <li>{{ $artwork->title }}</li>
-                                        <!-- Aquí puedes mostrar más información sobre la pieza de cerámica si lo deseas -->
+                                    @foreach($challenge->users as $user)
+                                        <li>{{ $user->name }}</li>
+                                        <ul>
+                                            @foreach($user->ceramicArtworks as $artwork)
+                                                <li>{{ $artwork->title }}</li>
+                                                <!-- Aquí puedes mostrar más información sobre la pieza de cerámica si lo deseas -->
+                                            @endforeach
+                                        </ul>
                                     @endforeach
                                 </ul>
-                            @endforeach
-                        </ul>
+                            </div>
+                        </div>
                     </li>
                 @endforeach
             </ul>
