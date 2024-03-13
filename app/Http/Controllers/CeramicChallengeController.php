@@ -37,11 +37,11 @@ class CeramicChallengeController extends Controller
             
         ]);
         $title = ucwords(strtolower($request->input('title')));
-        $description = ucwords(strtolower($request->input('description')));
+        
         // save data
         $ceramicChallenge = new CeramicChallenge();
         $ceramicChallenge->title = $title;
-        $ceramicChallenge->description = $description;
+        $ceramicChallenge->description = $request->input('description');
         $ceramicChallenge->start_date = $request->input('start_date');
         $ceramicChallenge->end_date = $request->input('end_date');
         $ceramicChallenge->save(); 
@@ -79,10 +79,10 @@ class CeramicChallengeController extends Controller
        
                 ]);
                 $title = ucwords(strtolower($request->input('title')));
-                $description = ucwords(strtolower($request->input('description')));
+            
                 // save data
                 $ceramicChallenge->title = $title;
-                $ceramicChallenge->description = $description;
+                $ceramicChallenge->description = $request->input('description');
                 $ceramicChallenge->start_date = $request->input('start_date');
                 $ceramicChallenge->end_date = $request->input('end_date');
                 $ceramicChallenge->save(); // lo guardamos
