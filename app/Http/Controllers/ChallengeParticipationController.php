@@ -11,7 +11,11 @@ use App\Models\ChallengeParticipation;
  
 class ChallengeParticipationController extends Controller
 {
-    //
+     public function index(){
+        $challenges = CeramicChallenge::with('users.ceramicArtworks')->get();
+
+        return view('challengeParticipation.index', compact('challenges')); //compact pasa $challenges a la vista
+    }
         public function create($id) {
             
             $ceramicChallenge = CeramicChallenge::find($id);

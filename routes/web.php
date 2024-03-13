@@ -40,3 +40,4 @@ Route::get('/challengeParticipation/{id}/create', [ChallengeParticipationControl
 
 Route::post('/challengeParticipation/{id}/create', [ChallengeParticipationController::class, 'store'])->name('challengeParticipation.store');
 
+Route::resource('/challengesParticipation',ChallengeParticipationController::class); 
