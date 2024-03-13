@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,20 +14,21 @@ return new class extends Migration
     {
         Schema::create('ceramic_artworks', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title', 50);
             $table->text('description');
-            $table->enum('ceramic-Technique', ['Handbuilding', 'Throwing on the Wheel', 'Slip Casting', 'Press Molding', 'Extrusion']); //ceramic technique enum
+            $table->enum('ceramic_technique', ['Handbuilding', 'Wheel_throwing', 'Slab_building', 'Coiling']);
             $table->date('creation_date')->nullable();
-            $table->string('created_by', 120);
+            $table->string('created_by', 125);
+            //$table->binary('photo')->nullable()->longBlob();
             $table->binary('photo')->nullable();
-            //$table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();; 
             $table->timestamps();
-            
-            //foreing key con cascade por si se elimina el usuario
-            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            //creamos la conexion con la tabla techniques
-            //$table->foreing('ceramic_technique_id')->references('id')->on('ceramicTechniques')->onDelete('cascade');
+
+           
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+          // simplemente porque al hacer la migracion a phpmyadmin no me toma el dato longblob, lo defino aqui:
+          DB::statement('ALTER TABLE ceramic_artworks MODIFY photo LONGBLOB');
     }
 
     /**

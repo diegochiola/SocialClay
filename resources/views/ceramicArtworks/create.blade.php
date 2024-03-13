@@ -27,8 +27,8 @@
                 <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" required>
             </div>
         </div>
-        <div clas="mb-3 row">
-            <label for="description" class="col-sm-2 col-form-label">Description:</label>
+        <div class="mb-3 row">
+            <label for="description" class="col-sm-10 col-form-label">Description:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="description" id="description" value="{{old('description')}}" required>
             </div>
@@ -58,8 +58,8 @@
             });
         </script>
         <!-- Connect DB with user selecter -->
-        <div clas="mb-3 row">
-            <label for="created_by" class="col-sm-2 col-form-label">Created by:</label>
+        <div class="mb-3 row">
+            <label for="created_by" class="col-sm-10 col-form-label">Created by:</label>
             <div class="col-sm-5">
                 <select class="form-select" name="created_by" id="created_by" required>
                     <option value="">Select a user</option>
@@ -69,14 +69,16 @@
                 </select>            
             </div>
         </div>
-        <div clas="mb-3 row" style="padding-bottom: 20px;">
-            <label for="photo" class="col-sm-2 col-form-label">Photo:</label>
+        <div class="mb-3 row" style="padding-bottom: 20px;">
+            <label for="photo" class="col-sm-10 col-form-label">Photo:</label>
             <div class="col-sm-5">
                 <input type="file" class="form-control" name="photo" id="photo" accept="image/*" required>
             </div>
         </div>
-        <div clas="mb-3 row">
-            <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
+        <div class="mb-3 row" >
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
+            </div>
         </div>
     </form>
 </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CeramicArtwork extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    public $timestamps = true;
     protected $table = 'ceramic_artworks';
     protected $fillable = ['title', 'description', 'ceramic_technique', 'creadtion_date','photo'];
     
@@ -22,7 +22,7 @@ class CeramicArtwork extends Model
         return $this->belongsToMany(User::class, 'user_artworks');
     }
     public function challenges(){
-        return $this->belongsToMany(CeramicChallenge::class, 'challenge_participation')->withTimestamps();
+        return $this->belongsToMany(CeramicChallenge::class, 'challenge_participations')->withTimestamps();
     }
 
 }

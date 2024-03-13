@@ -10,7 +10,7 @@
         <div class="card" style="background-color: #d0f779">
             <div class="card-body">
                 @if ($ceramicChallenge)
-                    <h5 class="card-title">Ceramic Challenge: {{ $ceramicChallenge->title }}</h5>
+                    <h4 class="card-title">Ceramic Challenge: {{ $ceramicChallenge->title }}</h4>
                     <p class="card-text">Description: {{ $ceramicChallenge->description }}</p>
                     <p class="card-text">Start Date: {{ $ceramicChallenge->start_date }}</p>
                     <p class="card-text">End Date: {{ $ceramicChallenge->end_date }}</p>
@@ -18,6 +18,7 @@
                     <form action="{{ route('challengeParticipation.store', $ceramicChallenge->id) }}" method="POST">
                     @csrf
                     <div class="form-group">
+                        <div class="col-sm-5">
                         <label for="user_id" style="margin-bottom:5px">Select your User name:</label>
                         <select class="form-control" id="user_id" name="user_id" required>
                             <option value="">Select User:</option>
@@ -31,7 +32,7 @@
                         <label for="ceramic_artwork_id" class="col-sm-2 col-form-label">Select Artwork:</label>
                         <div class="col-sm-5">
                             <select class="form-select" name="ceramic_artwork_id" id="ceramic_artwork_id" required>
-                                <option value="">Select an artwork:</option>
+                                <option value="">Select a Ceramic Artwork:</option>
                                 @foreach($ceramicArtworks as $artwork)
                                     <option value="{{ $artwork->id }}">{{ $artwork->title }}</option>
                                 @endforeach

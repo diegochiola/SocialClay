@@ -53,9 +53,9 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'users'); //establece una relación muchos a muchos                                                                        
     }
     public function ceramicArtworks(){
-        return $this->belongsToMany(CeramicArtwork::class, 'challenge_participation')->withTimestamps();
+        return $this->belongsToMany(CeramicArtwork::class, 'challenge_participations')->withTimestamps();
     }
     public function challenges(){
-        return $this->belongsToMany(CeramicChallenge::class, 'challenge_participation')->withTimestamps();
+        return $this->belongsToMany(CeramicChallenge::class, 'challenge_participations')->withTimestamps();
     }
 }
