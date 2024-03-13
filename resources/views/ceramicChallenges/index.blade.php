@@ -22,13 +22,13 @@
                             <!-- Boton de Participate -->
                             <form action="{{ route('challengeParticipation.create', $ceramicChallenge->id) }}" method="GET">
                                 @csrf
-                                <button type="submit" class="btn btn-primary rounded-pill" style="background-color: #2e4a19; margin-right: 5px;">Participate</button>
+                                <button type="submit" class="btn rounded-pill" style="background-color: #2e4a19; color:white; margin-right: 5px;">Participate</button>
                             </form>       
-                            <a href="{{ route('ceramicChallenges.edit', $ceramicChallenge->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
+                            <a href="{{ route('ceramicChallenges.edit', $ceramicChallenge->id) }}" class="btn rounded-pill"  style="background-color: #C8AEFF; color:white; margin-right: 5px;">Edit</a>
                             <form action="{{ route('ceramicChallenges.destroy', $ceramicChallenge->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-pill" style="background-color: rgb(255, 117, 111);">Delete</button>
+                                <button type="submit" class="btn rounded-pill" style="background-color: rgb(255, 117, 111); color:white;">Delete</button>
                             </form>
                         </div>  
 
@@ -38,11 +38,11 @@
             @endforeach
         </div>
         <!-- Boton de + -->
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-4 mb-4"> 
                 <div class="card" >
-                    <a href="{{ route('ceramicChallenges.create') }}" class="btn btn-success " style="background-color: #C8AEFF;">
-                        <h4> Add Challange </h4>
+                    <a href="{{ route('ceramicChallenges.create') }}" class="btn" style="background-color:#d0f779; color:#2e4a19;">
+                        <h4> + </h4>
                     </a>
                 </div> 
             </div>

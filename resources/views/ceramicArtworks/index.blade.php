@@ -19,11 +19,11 @@
                         <p class="card-text">Ceramic Technique: {{ $artwork->ceramic_technique }}</p>
                         <p class="card-text">Created by: {{ $artwork->user->name }}</p>
                         <div class="btn-group" role="group" aria-label="Artwork Actions">
-                            <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
+                            <a href="{{ route('ceramicArtworks.edit', $artwork->id) }}" class="btn rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
                             <form action="{{ route('ceramicArtworks.destroy', $artwork->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-pill" style="background-color: rgb(255, 117, 111);">Delete</button>
+                                <button type="submit" class="btn rounded-pill" style="background-color: rgb(255, 117, 111);">Delete</button>
                             </form>
                         </div> 
 
@@ -33,11 +33,12 @@
             @endforeach
         </div>
         <!-- Boton de + -->
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-4 mb-4"> 
                 <div class="card" >
-                    <a href="{{ route('ceramicArtworks.create') }}" class="btn btn-success " style="background-color: #C8AEFF;">
+                    <a href="{{ route('ceramicArtworks.create') }}" class="btn" style="background-color:#d0f779; color:#2e4a19;">
                         <h3> + </h3>
+                       
                     </a>
                 </div> 
             </div>

@@ -77,7 +77,7 @@
         </div>
         <div class="mb-3 row" >
             <div class="col-sm-10">
-                <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
+                <button type="submit" class="btn rounded-pill " style="background-color:#d0f779; color:#2e4a19;">Submit</button>
             </div>
         </div>
     </form>
