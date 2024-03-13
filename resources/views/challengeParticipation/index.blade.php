@@ -21,9 +21,9 @@
                                     @foreach($challenge->users as $user)
                                         <li>{{ $user->name }}</li>
                                         <ul>
-                                            @foreach($user->ceramicArtworks as $artwork)
-                                                <li>{{ $artwork->title }}</li>
-                                                <!-- Aquí puedes mostrar más información sobre la pieza de cerámica si lo deseas -->
+                                            @foreach($user->ceramicArtworksForChallenge($challenge->id) as $artwork)
+                                                <li>Artwork title: {{ $artwork->title }}</li>
+                                                <img src="data:image/jpeg;base64,{{ base64_encode($artwork->photo) }}" alt="Artwork Photo" >
                                             @endforeach
                                         </ul>
                                     @endforeach
