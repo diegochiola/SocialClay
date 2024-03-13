@@ -55,12 +55,20 @@
                     </div>
                 </div>
 
-                <div class="mb-3 row">
-                    <label for="created_by" class="col-sm-10 col-form-label">Created by:</label>
+                <div clas="mb-3 row">
+                    <label for="created_by" class="col-sm-2 col-form-label">Created by:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" name="created_by" id="created_by" value="{{ $ceramicArtwork->created_by }}" required>
+                        <select class="form-select" name="created_by" id="created_by" required>
+                            <option value="">Select a user</option>
+                            @foreach($users as $user)
+                                <option value="{{ $user->id }}" {{ $ceramicArtwork->created_by == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
+                
                 <!-- Campo imposible de editar la foto
                 <div class="mb-3 row">
                     <label for="photo" class="col-sm-10 col-form-label">Photo:</label>
@@ -71,7 +79,7 @@
                 -->
 
                 <div clas="mb-3 row">
-            <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
+            <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF; margin-top:10px">Submit</button>
         </div>
             
                 </form>

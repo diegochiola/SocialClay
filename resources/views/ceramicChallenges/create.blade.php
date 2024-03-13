@@ -21,13 +21,13 @@
         @csrf
         <div class="row">
         <div class="mb-3 row">
-            <label for="title" class="col-form-label"> Title:</label>
+            <label for="title" class="col-sm-10 col-form-label"> Title:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="title" id="title" value="{{old('title')}}" required>
             </div>
         </div>
-        <div clas="mb-3 row">
-            <label for="description" class="col-sm-2 col-form-label">Description:</label>
+        <div class="mb-3 row">
+            <label for="description" class="col-sm-10 col-form-label">Description:</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="description" id="description" value="{{old('description')}}" required>
             </div>
@@ -59,7 +59,7 @@
 
         
         <div clas="mb-3 row">
-            <button type="submit" class="btn btn-success rounded-pill" style="background-color: #C8AEFF;">Submit</button>
+            <button type="submit" class="btn rounded-pill " style="background-color:#d0f779; color:#2e4a19;">Submit</button>
         </div>
       
     </form>

@@ -49,9 +49,16 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'users'); //establece una relación muchos a muchos 
-                                                                            
+    public function users(){
+        return $this->belongsToMany(User::class, 'users'); //establece una relación muchos a muchos                                                                        
+    }
+    public function ceramicArtworks(){
+        return $this->belongsToMany(CeramicArtwork::class, 'challenge_participations')->withTimestamps();
+    }
+    public function challenges(){
+        return $this->belongsToMany(CeramicChallenge::class, 'challenge_participations')->withTimestamps();
+    }
+    public function ceramicArtworksForChallenge($challengeId){
+        return $this->ceramicArtworks()->where('ceramic_challenge_id', $challengeId)->get();
     }
 }

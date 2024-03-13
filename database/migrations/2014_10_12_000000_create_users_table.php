@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -17,19 +18,17 @@ return new class extends Migration
             $table->string('surname', 120);
             $table->date('date_of_birth');
             $table->string('email', 50)->unique();
-            $table->string('password', 50);
+            $table->string('password'); 
             $table->string('phone_number', 20);
-            $table->enum('role', ['artist', 'enthusiast', 'administrator']); //llamara a la tabla Roles
+            $table->enum('role', ['artist', 'enthusiast', 'administrator']);
             $table->string('location', 250)->nullable();
-            $table->binary('photo')->nullable(); //ubicacion de la foto
-            $table->rememberToken(); //token para la opcion recuerdame
-            $table->timestamps(); //crean el created_at updated_at
-
-            //creamos la conexion con la tabla Roles
-            //$table->foreign('role_id')->references('id')->on('roles');
-            
-
+            $table->binary('photo')->nullable();
+            //$table->binary('photo')->nullable()->longBlob();;
+            $table->rememberToken();
+            $table->timestamps();
         });
+        // simplemente porque al hacer la migracion a phpmyadmin no me toma el dato longblob, lo defino aqui:
+        DB::statement('ALTER TABLE users MODIFY photo LONGBLOB');
     }
 
     /**

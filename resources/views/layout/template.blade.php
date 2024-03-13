@@ -44,6 +44,10 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{url('/ceramicChallenges/create')}}">Add Challenge</a>
         </li>
+         <!-- Challenge Participation-->
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{url('/challengesParticipation')}}">Challenge Participation</a>
+        </li>
       </ul>
     </div>
   </div>

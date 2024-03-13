@@ -11,10 +11,15 @@ class CeramicChallenge extends Model
     protected $table= 'ceramic_challenges';
 
     protected $fillable = ['title', 'description', 'start_date', 'end_date','photo'];
-    public $timestamps = false;
+    public function artworks(){
+        return $this->belongsToMany(CeramicArtwork::class, 'challenge_participations')->withTimestamps();
+    }
 
-    public function ceramicChallenges()
-    {
+    public function users(){
+        return $this->belongsToMany(User::class, 'challenge_participations')->withTimestamps();
+    }
+
+    public function ceramicChallenges(){
         return $this->belongsToMany(CeramicChallenge::class, 'ceramicChallenges'); //establece una relación muchos a muchos 
                                                                             
     }

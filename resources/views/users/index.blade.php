@@ -18,11 +18,11 @@
                         <p class="card-text">Role: {{ $user->role }}</p>
                         <p class="card-text">Location: {{ $user->location }}</p>
                         <div class="btn-group" role="group" aria-label="User Actions">
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn rounded-pill"  style="background-color: #C8AEFF; margin-right: 5px;">Edit</a>
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger rounded-pill" style="background-color: rgb(255, 117, 111);">Delete</button>
+                                <button type="submit" class="btn rounded-pill" style="background-color: rgb(255, 117, 111);">Delete</button>
                             </form>
                         </div> 
 
@@ -32,10 +32,10 @@
             @endforeach
         </div>
         <!-- Boton de + -->
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-4 mb-4"> 
                 <div class="card" >
-                    <a href="{{ route('users.create') }}" class="btn btn-success " style="background-color: #d0f779; color: rgb(200, 174, 255);">
+                    <a href="{{ route('users.create') }}" class="btn" style="background-color: #d0f779; color: rgb(200, 174, 255);">
                         <h3> + </h3>
                     </a>
                 </div> 
